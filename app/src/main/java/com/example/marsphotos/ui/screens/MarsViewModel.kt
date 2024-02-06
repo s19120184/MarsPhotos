@@ -19,7 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.marsphotos.MarsPhotosApplication
 import com.example.marsphotos.data.MarsPhotosRepository
 import com.example.marsphotos.data.NetworkMarsPhotosRepository
 import com.example.marsphotos.network.MarsApi
@@ -54,7 +59,6 @@ class MarsViewModel(private  val marsPhotosRepository: MarsPhotosRepository) : V
         viewModelScope.launch {
 
              marsUiState = try {
-                 val marsPhotosRepository = NetworkMarsPhotosRepository()
                  val listResult = marsPhotosRepository.getMarsPhothos()
                  MarsUiState.Success(listResult)
             }catch (e: IOException){
