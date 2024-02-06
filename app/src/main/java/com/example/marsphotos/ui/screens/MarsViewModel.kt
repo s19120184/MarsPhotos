@@ -33,7 +33,7 @@ sealed interface MarsUiState {
     object Loading : MarsUiState
 }
 
-class MarsViewModel : ViewModel() {
+class MarsViewModel(private  val marsPhotosRepository: MarsPhotosRepository) : ViewModel(){
     /** The mutable State that stores the status of the most recent request */
     var marsUiState:  MarsUiState by  mutableStateOf(MarsUiState.Loading )
         private set
