@@ -8,7 +8,7 @@ interface MarsPhotosRepository {
     suspend fun getMarsPhothos():List<MarsPhoto>
 }
 
-class NetworkMarsPhotosRepository(): MarsPhotosRepository{
+class NetworkMarsPhotosRepository : MarsPhotosRepository{
     override suspend fun getMarsPhothos(): List<MarsPhoto> {
         return MarsApi.retrofitService.getPhotosPerro()
     }
